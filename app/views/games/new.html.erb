@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>New game</h1>
+  <% @letters.each do |letter| %>
+    <a class="btn btn-success"><%= letter %></a>
+  <% end %>
+  <form action="/score" method="post">
+    <div class="mb-3">
+      <label for="word" class="form-label">What is the longest word you can find with the letters above?</label>
+      <input type="text" class="form-control" id="word" name="word">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :letters, @letters %>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <%= link_to 'Reset grid', new_path %>
+
+</div>
